@@ -1,20 +1,23 @@
-import sublime, sublime_plugin
+import sublime, sublime_plugin, pickle, json, socket
+HOST = "localhost"
+PORT = 5005
+
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((HOST, PORT))
   
 class EventDump(sublime_plugin.EventListener):
-    def onLoad(self, view):
-        print("just got loaded")
-
-    def onPreSave(self, view): 
-        print("is about to be saved"  )
-  
-    def onPostSave(self, view):  
-        print("just got saved"  )
-          
-    def onNew(self, view):  
-        print("new file"  )
-
     def on_selection_modified(self, view):
-        print("DADA")
+        
+        sel = view.sel()
+        region1 = sel[0]
+        selectionText = view.substr(region1)
+
+        '''a = dict( file=view.file_name(), selection = selectionText);'''
+        a = {"file": view.file_name(), "selection" : selectionText}
+
+        s.send(bytes(json.dumps(a), 'UTF-8'))
+        print(a)
   
     def onSelectionModified(self, view):  
         print("modified a")
@@ -27,6 +30,3 @@ class EventDump(sublime_plugin.EventListener):
   
     def onClose(self, view):  
         print("is no more"  )
-  
-    def onClone(self, view):  
-        print("just got cloned" )
