@@ -1,7 +1,0 @@
-{
-	"version": "1.0.0.1",
-	"url": "https://github.com/mraiur/sublime-code-cast",
-	"description": "Cast your currently working file and highlight to a socket server. Install server from https://github.com/mraiur/sublime-code-cast-server",
-	"sublime_text": "*",
-	"platforms": ["*"]
-}
