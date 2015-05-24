@@ -1,0 +1,40 @@
+[
+    {
+        "id": "preferences",
+        "children":
+        [
+	        {
+			    "id" : "CodeCast",
+			    "caption" : "CodeCast",
+				"children": [
+					{
+						"caption" : "Connect",
+						"id" : "code_cast_connect",
+						"command" : "code_cast_connect"
+					},
+                    {
+                        "caption" : "Disconnect",
+                        "id" : "code_cast_disconnect",
+                        "command" : "code_cast_disconnect"
+                    },
+
+					{ "caption": "-" },
+                    {
+                        "command": "open_file", "args":
+                        {
+                            "file": "${packages}/CodeCast/CodeCast.sublime-settings"
+                        },
+                        "caption": "Settings – Default"
+                    },
+                    {
+                        "command": "open_file", "args":
+                        {
+                            "file": "${packages}/User/CodeCast.sublime-settings"
+                        },
+                        "caption": "Settings – User"
+                    }
+				]
+			}
+        ]
+    }
+]
